@@ -112,7 +112,17 @@ app.delete('/api/articles/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error deleting article' })
   }
 })
-
+app.get('/api/auth/login', (req, res) => {
+  res.json({
+    message: 'This endpoint requires POST request',
+    environment_check: {
+      admin_password_set: !!process.env.ADMIN_PASSWORD,
+      jwt_secret_set: !!process.env.JWT_SECRET,
+      mongodb_uri_set: !!process.env.MONGODB_URI
+    },
+    instructions: 'Send a POST request with { "password": "your_password" }'
+  })
+})
 // Authentication routes
 app.post('/api/auth/login', async (req, res) => {
   const { password } = req.body
