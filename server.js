@@ -113,7 +113,7 @@ app.delete('/api/articles/:id', authenticateToken, async (req, res) => {
   }
 })
 // Authentication routes
-app.post('/api/auth/check', async (req, res) => {
+app.post('/api/auth/login', async (req, res) => {
   const { password } = req.body
   
   // You should change this to your desired password
@@ -131,7 +131,7 @@ app.post('/api/auth/check', async (req, res) => {
   }
 })
 
-app.get('/api/auth/check', authenticateToken, (req, res) => {
+app.get('/api/auth/login', authenticateToken, (req, res) => {
   res.json({ authenticated: true })
 })
 
