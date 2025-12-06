@@ -61,7 +61,7 @@ const authenticateToken = (req, res, next) => {
 // Routes
 app.get('/api/articles', async (req, res) => {
   try {
-    const articles = await Article.find().sort({ pinned: -1, createdAt: -1 })
+    const articles = await Article.find().sort({ ispinned: -1, createdAt: -1 })
     res.json(articles)
   } catch (error) {
     res.status(500).json({ error: 'Error fetching articles' })
